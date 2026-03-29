@@ -18,9 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * UC17 - REST Controller.
- *
- * Changes from UC16:
+ * REST Controller.
  *   - @RestController + @RequestMapping expose HTTP endpoints
  *   - @Valid on every @RequestBody triggers Bean Validation automatically
  *   - All endpoints return QuantityMeasurementDTO (structured response)
@@ -46,7 +44,7 @@ public class QuantityMeasurementController {
 
     @PostMapping("/compare")
     @Operation(summary = "Compare two quantities",
-               description = "Returns true/false in the resultString field.")
+            description = "Returns true/false in the resultString field.")
     public ResponseEntity<QuantityMeasurementDTO> compare(
             @Valid @RequestBody CompareRequestDTO request) {
         logger.info("POST /compare");
@@ -104,7 +102,7 @@ public class QuantityMeasurementController {
 
     @GetMapping("/history/{operation}")
     @Operation(summary = "Get history by operation type",
-               description = "Operation values: COMPARE, CONVERT, ADD, SUBTRACT, DIVIDE")
+            description = "Operation values: COMPARE, CONVERT, ADD, SUBTRACT, DIVIDE")
     public ResponseEntity<List<QuantityMeasurementDTO>> getByOperation(
             @Parameter(description = "Operation type e.g. COMPARE, ADD")
             @PathVariable String operation) {
@@ -113,7 +111,7 @@ public class QuantityMeasurementController {
 
     @GetMapping("/history/type/{measurementType}")
     @Operation(summary = "Get history by measurement type",
-               description = "Type values: LengthUnit, WeightUnit, VolumeUnit, TemperatureUnit")
+            description = "Type values: LengthUnit, WeightUnit, VolumeUnit, TemperatureUnit")
     public ResponseEntity<List<QuantityMeasurementDTO>> getByType(
             @Parameter(description = "Measurement type e.g. LengthUnit, WeightUnit")
             @PathVariable String measurementType) {
